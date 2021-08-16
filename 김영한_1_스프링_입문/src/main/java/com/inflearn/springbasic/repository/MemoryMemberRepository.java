@@ -3,7 +3,6 @@ package com.inflearn.springbasic.repository;
 import com.inflearn.springbasic.domain.Member;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MemoryMemberRepository implements MemberRepository {
 
@@ -34,6 +33,7 @@ public class MemoryMemberRepository implements MemberRepository {
         return new ArrayList<>(store.values());
     }
 
+    @Override
     public void clearStore() {
         store.clear();
     }

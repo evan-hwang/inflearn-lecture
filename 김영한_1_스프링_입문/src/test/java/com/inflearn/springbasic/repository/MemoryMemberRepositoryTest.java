@@ -10,10 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MemoryMemberRepositoryTest {
 
-    MemoryMemberRepository repository = new MemoryMemberRepository();
+    MemberRepository repository = new MemoryMemberRepository();
 
     @AfterEach
-    public void afterEach() {
+    public void tearDown() {
         repository.clearStore();
     }
 
