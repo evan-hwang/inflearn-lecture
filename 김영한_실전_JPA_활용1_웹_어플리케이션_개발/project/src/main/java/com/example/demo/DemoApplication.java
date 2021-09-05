@@ -18,12 +18,17 @@ public class DemoApplication {
         tx.begin();
 
         try {
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .getResultList();
+            // 비영속
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("HelloJPA");
 
-            for (Member member : result) {
-                System.out.println("member.getName() = " + member.getName());
-            }
+            // 영속
+            System.out.println("===== BEFORE ======");
+            System.out.println("member = " + member);
+            System.out.println("===== AFTER ======");
+
+            em.persist(member);
 
             tx.commit();
         } catch (Exception e) {
