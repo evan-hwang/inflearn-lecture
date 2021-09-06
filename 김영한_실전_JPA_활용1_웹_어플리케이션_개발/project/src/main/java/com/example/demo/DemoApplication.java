@@ -18,18 +18,15 @@ public class DemoApplication {
         tx.begin();
 
         try {
-            // 비영속
             Member member = new Member();
-            member.setId(1L);
+            member.setId(200L);
             member.setName("HelloJPA");
-
-            // 영속
-            System.out.println("===== BEFORE ======");
-            System.out.println("member = " + member);
-            System.out.println("===== AFTER ======");
-
             em.persist(member);
 
+            // flush 실행 시 INSERT 쿼리 나감
+            em.flush();
+
+            System.out.println("==============");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
