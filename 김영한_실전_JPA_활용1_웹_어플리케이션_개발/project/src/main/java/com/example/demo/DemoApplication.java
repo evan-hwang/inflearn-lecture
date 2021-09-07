@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.domain.Order;
+import com.example.demo.domain.OrderItem;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,16 +21,12 @@ public class DemoApplication {
         tx.begin();
 
         try {
-            Member member = new Member();
-            member.setId(200L);
-            member.setName("HelloJPA");
-            em.persist(member);
 
-            // flush 실행 시 INSERT 쿼리 나감
-            em.flush();
+            OrderItem orderItem = new OrderItem();
 
-            System.out.println("==============");
-            tx.commit();
+            Order order = new Order();
+            order.addOrderItem(orderItem);
+
         } catch (Exception e) {
             tx.rollback();
         } finally {
