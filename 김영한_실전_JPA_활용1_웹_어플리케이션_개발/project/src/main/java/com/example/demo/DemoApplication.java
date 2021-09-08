@@ -22,11 +22,6 @@ public class DemoApplication {
 
         try {
 
-            OrderItem orderItem = new OrderItem();
-
-            Order order = new Order();
-            order.addOrderItem(orderItem);
-
         } catch (Exception e) {
             tx.rollback();
         } finally {

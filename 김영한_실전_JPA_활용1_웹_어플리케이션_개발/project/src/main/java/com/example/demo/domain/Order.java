@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "ORDERS")
 public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ID")
     private Long id;
 
@@ -22,10 +22,17 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "DELEVERY_ID")
+    private Delivery delivery;
+
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     private LocalDateTime orderDate;
+
+    public Order() {
+    }
 
     public Long getId() {
         return id;

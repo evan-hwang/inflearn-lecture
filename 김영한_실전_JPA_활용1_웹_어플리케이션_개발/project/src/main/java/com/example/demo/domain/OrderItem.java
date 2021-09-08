@@ -21,6 +21,9 @@ public class OrderItem {
 
     private Integer count;
 
+    public OrderItem() {
+    }
+
     public Long getId() {
         return id;
     }
